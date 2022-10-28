@@ -1,0 +1,28 @@
+{
+  "toDo": [
+    {
+      "id": 1,
+      "title": "Film İzle",
+      "description": "Netflix'de yani çıkan bir filmi izle",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "title": "Kitap Oku",
+      "description": "Amazon kitabından 100 sayfa oku",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "title": "Evi Temizle",
+      "description": "Oturma odasını ve mutfağı süpür",
+      "checked": false
+    },
+    {
+      "id": 4,
+      "title": "Evi Topla",
+      "description": "Çalışma odasını ve mutfağı topla",
+      "checked": false
+    }
+  ]
+}
