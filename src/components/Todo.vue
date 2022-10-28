@@ -1,7 +1,12 @@
 <template>
   <div class="todo">
-    <input type="checkbox" class="todo-checkbox" />
-    <div class="todo-content">
+    <input
+      type="checkbox"
+      class="todo-checkbox"
+      @change="changedTodo"
+      v-model="checked"
+    />
+    <div class="todo-content" :class="{ 'todo-content-checked': checked }">
       <div class="todo-content-title">{{ todo.title }}</div>
       <div class="todo-content-description">{{ todo.description }}</div>
     </div>
@@ -13,7 +18,14 @@ export default {
   name: "TodoComponent",
   props: ["todo"],
   data() {
-    return {};
+    return {
+      checked: this.todo.checked,
+    };
+  },
+  methods: {
+    changedTodo() {
+      this.$emit("changedTodoEmit", this.checked);
+    },
   },
 };
 </script>
@@ -61,6 +73,9 @@ export default {
       font-weight: 400;
       color: #999;
     }
+  }
+  &-content-checked {
+    text-decoration: line-through;
   }
 }
 </style>

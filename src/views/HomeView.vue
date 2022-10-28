@@ -2,7 +2,14 @@
   <div class="home">
     <Header :todoCount="toDos.length">{{ toDos.length }} </Header>
     <Container>
-      <Todo v-for="toDo in toDos" :key="toDo.id" :todo="toDo"></Todo>
+      <Todo
+        v-for="toDo in toDos"
+        :key="toDo.id"
+        :todo="toDo"
+        @changedTodoEmit="
+          (componentData) => changedTodo(componentData, toDo.id)
+        "
+      ></Todo>
     </Container>
   </div>
 </template>
@@ -23,8 +30,17 @@ export default {
       toDos: [],
     };
   },
+  methods: {
+    changedTodo(componentData, id) {
+      fetch(`http://localhost:3000/todo/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ checked: componentData }),
+      });
+    },
+  },
   created() {
-    fetch("http://localhost:3000/todo")
+    fetch("http://localhost:3000/todo/")
       .then((res) => res.json())
       .then((data) => (this.toDos = data))
       .catch((err) => console.log(err));
