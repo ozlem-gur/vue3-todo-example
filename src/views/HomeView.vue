@@ -3,11 +3,15 @@
     <Header :todoCount="toDos.length">{{ toDos.length }} </Header>
     <Container>
       <Todo
-        v-for="toDo in toDos"
+        v-for="(toDo, index) in toDos"
         :key="toDo.id"
         :todo="toDo"
         @changedTodoEmit="
           (componentData) => changedTodo(componentData, toDo.id)
+        "
+        @todoDeleteEmit="todoDelete(toDo.id, index)"
+        @updateContentEmit="
+          (componentData) => updateTodo(componentData, toDo.id)
         "
       ></Todo>
     </Container>
@@ -36,6 +40,22 @@ export default {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ checked: componentData }),
+      });
+    },
+    todoDelete(id, index) {
+      fetch(`http://localhost:3000/todo/${id}`, {
+        method: "DELETE",
+      });
+      this.toDos.splice(index, 1);
+    },
+    updateTodo(componentData, id) {
+      fetch(`http://localhost:3000/todo/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: componentData.title,
+          description: componentData.description,
+        }),
       });
     },
   },

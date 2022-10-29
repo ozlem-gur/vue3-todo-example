@@ -7,21 +7,21 @@
       "checked": false
     },
     {
-      "id": 2,
-      "title": "Kitap Oku",
-      "description": "Amazon kitabından 100 sayfa oku",
-      "checked": true
-    },
-    {
       "id": 3,
       "title": "Evi Temizle",
-      "description": "Oturma odasını ve mutfağı süpür",
-      "checked": true
+      "description": "Oturma odasını süpür",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "title": "Kitap Okusana lan zırto",
+      "description": "Tutunamayanlar'dan 100 sayfa oku ama çok hızlı olmasın!!!",
+      "checked": false
     },
     {
       "id": 4,
-      "title": "Evi Topla",
-      "description": "Çalışma odasını ve mutfağı topla",
+      "title": "Masayı Temizleyelim",
+      "description": "Masanın üstündekileri kaldır",
       "checked": false
     }
   ]
