@@ -1,12 +1,6 @@
 {
   "toDo": [
     {
-      "id": 1,
-      "title": "Film İzle",
-      "description": "Netflix'de yani çıkan bir filmi izle",
-      "checked": false
-    },
-    {
       "id": 3,
       "title": "Evi Temizle",
       "description": "Oturma odasını süpür",
@@ -23,6 +17,12 @@
       "title": "Masayı Temizleyelim",
       "description": "Masanın üstündekileri kaldır",
       "checked": false
+    },
+    {
+      "title": "Yeni Batman Filmini İzle",
+      "description": "Batman filmine çok güzel diyorlar.",
+      "checked": false,
+      "id": 28431537
     }
   ]
 }

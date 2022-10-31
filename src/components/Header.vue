@@ -1,11 +1,14 @@
 <template>
   <div class="header">
-    <Container>
+    <Container class="header-container">
       <div class="header-title">
         Todo
         <span class="header-title-count">
           <slot />
         </span>
+      </div>
+      <div class="header-icons">
+        <span @click="todoAddShow" class="material-icons"> add_circle </span>
       </div>
     </Container>
   </div>
@@ -18,6 +21,11 @@ export default {
   components: {
     Container,
   },
+  methods: {
+    todoAddShow() {
+      this.$emit("todoAddShowEmit");
+    },
+  },
 };
 </script>
 
@@ -26,7 +34,23 @@ export default {
   border-bottom: 1px solid rgb(222, 222, 224);
   padding-top: 10px;
   padding-bottom: 10px;
+  position: relative;
 
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-icons {
+    cursor: pointer;
+    .material-icons {
+      color: #999;
+      &:hover {
+        color: #333;
+      }
+    }
+  }
   &-title {
     font-size: 22px;
     font-weight: 800;

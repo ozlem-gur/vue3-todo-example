@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <div class="container-title"></div>
-    <div class="container-box">
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
 

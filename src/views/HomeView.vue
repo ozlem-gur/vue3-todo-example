@@ -1,6 +1,15 @@
 <template>
   <div class="home">
-    <Header :todoCount="toDos.length">{{ toDos.length }} </Header>
+    <Header
+      @todoAddShowEmit="isAddTodoComponentShow = true"
+      :todoCount="toDos.length"
+      >{{ toDos.length }}
+    </Header>
+    <TodoAdd
+      @todoAddTaskEmit="(componentData) => todoAddTask(componentData)"
+      @todoAddRemoveEmit="isAddTodoComponentShow = false"
+      v-if="isAddTodoComponentShow"
+    />
     <Container>
       <Todo
         v-for="(toDo, index) in toDos"
@@ -22,16 +31,19 @@
 import Todo from "@/components/Todo.vue";
 import Header from "@/components/Header.vue";
 import Container from "@/components/Container.vue";
+import TodoAdd from "@/components/TodoAdd.vue";
 
 export default {
   components: {
     Todo,
     Header,
     Container,
+    TodoAdd,
   },
   data() {
     return {
       toDos: [],
+      isAddTodoComponentShow: false,
     };
   },
   methods: {
@@ -57,6 +69,20 @@ export default {
           description: componentData.description,
         }),
       });
+    },
+    todoAddTask(componentData) {
+      const todoData = {
+        title: componentData.title,
+        description: componentData.description,
+        checked: false,
+        id: Math.floor(Math.random() * 100000000),
+      };
+      fetch(`http://localhost:3000/todo`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(todoData),
+      });
+      this.toDos.push(todoData);
     },
   },
   created() {
